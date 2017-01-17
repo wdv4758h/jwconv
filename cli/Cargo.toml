@@ -2,6 +2,10 @@
 authors = ["Chiu-Hsiang Hsu <wdv4758h@gmail.com>"]
 name = "jwconv-cli"
 version = "0.0.1"
+license = "Apache-2.0"
+description = "Japanese Writing System Converter (CLI)"
+repository = "https://github.com/wdv4758h/jwconv/"
+keywords = ["japanese", "romaji", "hiragana", "cli"]
 
 [[bin]]
 name = "jwconv"
