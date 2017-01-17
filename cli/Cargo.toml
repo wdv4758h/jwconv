@@ -3,6 +3,9 @@ authors = ["Chiu-Hsiang Hsu <wdv4758h@gmail.com>"]
 name = "jwconv-cli"
 version = "0.0.1"
 
+[[bin]]
+name = "jwconv"
+
 [dependencies]
 jwconv = { path = "../core" }
 clap = { version = "2.20.0", features = ["yaml"] }

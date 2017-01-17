@@ -1,8 +1,7 @@
 [root]
-name = "jwconv-cli"
+name = "jwconv-ffi"
 version = "0.0.1"
 dependencies = [
- "clap 2.20.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "jwconv 0.0.1",
 ]
 
@@ -37,6 +36,14 @@ name = "jwconv"
 version = "0.0.1"
 dependencies = [
  "lazy_static 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "jwconv-cli"
+version = "0.0.1"
+dependencies = [
+ "clap 2.20.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "jwconv 0.0.1",
 ]
 
 [[package]]
