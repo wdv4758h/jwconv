@@ -1,7 +1,5 @@
-[package]
-authors = ["Chiu-Hsiang Hsu <wdv4758h@gmail.com>"]
-name = "jwconv"
-version = "0.0.1"
-
-[dependencies]
-lazy_static = "0.2.2"
+[workspace]
+members = [
+    "core/",
+    "cli/",
+]

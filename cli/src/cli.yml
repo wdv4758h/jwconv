@@ -1,0 +1,21 @@
+name: jwconv
+version: 0.0.1
+about: Japanese Writing System Converter
+author: Chiu-Hsiang Hsu <wdv4758h@gmail.com>
+
+settings:
+    - ColoredHelp
+
+args:
+    - mode:
+        help: choose translation mode
+        long: mode
+        short: m
+        takes_value: true
+        default_value: "r2h"
+        possible_values:
+            - "r2h"
+    - data:
+        help: data to translate
+        required: true
+        index: 1
