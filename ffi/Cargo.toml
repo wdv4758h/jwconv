@@ -1,0 +1,11 @@
+[package]
+authors = ["Chiu-Hsiang Hsu <wdv4758h@gmail.com>"]
+name = "jwconv-ffi"
+version = "0.0.1"
+
+[lib]
+name = "jwconv"
+crate-type = ["staticlib", "cdylib"]
+
+[dependencies]
+jwconv = { path = "../core" }
