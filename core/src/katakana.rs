@@ -1,52 +1,52 @@
 use std::collections::HashMap;
 
 
-const HIRAGANA: &'static [[&'static str; 5]; 32] = &[
+const KATAKANA: &'static [[&'static str; 5]; 32] = &[
     // everything except "n"
     //     a       i       u       e       o
-    [   "あ",   "い",   "う",   "え",   "お"],     //
-    [   "か",   "き",   "く",   "け",   "こ"],     // k
-    [   "さ",   "し",   "す",   "せ",   "そ"],     // s
-    [   "た",   "ち",   "つ",   "て",   "と"],     // t
-    [   "な",   "に",   "ぬ",   "ね",   "の"],     // n
-    [   "は",   "ひ",   "ふ",   "へ",   "ほ"],     // h
-    [   "ま",   "み",   "む",   "め",   "も"],     // m
-    [   "や",     "",   "ゆ", "いぇ",   "よ"],     // y
-    [   "ら",   "り",   "る",   "れ",   "ろ"],     // r
-    [   "わ", "うぃ",   "う", "うぇ",   "を"],     // w
+    [   "ア",   "イ",   "ウ",   "エ",   "オ"],     //
+    [   "カ",   "キ",   "ク",   "ケ",   "コ"],     // k
+    [   "サ",   "シ",   "ス",   "セ",   "ソ"],     // s
+    [   "タ",   "チ",   "ツ",   "テ",   "ト"],     // t
+    [   "ナ",   "ニ",   "ヌ",   "ネ",   "ノ"],     // n
+    [   "ハ",   "ヒ",   "フ",   "ヘ",   "ホ"],     // h
+    [   "マ",   "ミ",   "ム",   "メ",   "モ"],     // m
+    [   "ヤ",     "",   "ユ", "イェ",   "ヨ"],     // y
+    [   "ラ",   "リ",   "ル",   "レ",   "ロ"],     // r
+    [   "ワ", "ウィ",     "", "ウェ",   "ヲ"],     // w
 
-    [   "が",   "ぎ",   "ぐ",   "げ",   "ご"],     // g
-    [   "ざ",   "じ",   "ず",   "ぜ",   "ぞ"],     // z
-    [   "だ",   "ぢ",   "づ",   "で",   "ど"],     // d
-    [   "ば",   "び",   "ぶ",   "べ",   "ぼ"],     // b
-    [   "ぱ",   "ぴ",   "ぷ",   "ぺ",   "ぽ"],     // p
+    [   "ガ",   "ギ",   "グ",   "ゲ",   "ゴ"],     // g
+    [   "ザ",   "ジ",   "ズ",   "ゼ",   "ゾ"],     // z
+    [   "ダ",   "ヂ",   "ヅ",   "デ",   "ド"],     // d
+    [   "バ",   "ビ",   "ブ",   "ベ",   "ボ"],     // b
+    [   "パ",   "ピ",   "プ",   "ペ",   "ポ"],     // p
 
-    [ "きゃ", "きぃ", "きゅ", "きぇ", "きょ"],     // ky
-    [ "しゃ",   "し", "しゅ", "しぇ", "しょ"],     // sh
-    [ "ちゃ",   "ち", "ちゅ", "ちぇ", "ちょ"],     // ch
-    [ "にゃ", "にぃ", "にゅ", "にゃ", "にょ"],     // ny
-    [ "ひゃ", "ひぃ", "ひゅ", "ひぇ", "ひょ"],     // hy
-    [ "みゃ", "みぃ", "みゅ", "みぇ", "みょ"],     // my
-    [ "りゃ", "りぃ", "りゅ", "りぇ", "りょ"],     // ry
-    [ "ぎゃ", "ぎぃ", "ぎゅ", "ぎぇ", "ぎょ"],     // gy
-    [ "じゃ",   "じ", "じゅ", "じぇ", "じょ"],     // j
-    [ "びゃ", "びぃ", "びゅ", "びぇ", "びょ"],     // by
-    [ "ぴゃ", "ぴぃ", "ぴゅ", "ぴぇ", "ぴょ"],     // py
+    [ "キャ", "キィ", "キュ", "キェ", "キョ"],     // ky
+    [ "シャ",   "シ", "シュ", "シェ", "ショ"],     // sh
+    [ "チャ",   "チ", "チュ", "チェ", "チョ"],     // ch
+    [ "ニャ", "ニィ", "ニュ", "ニェ", "ニョ"],     // ny
+    [ "ヒャ", "ヒィ", "ヒュ", "ヒェ", "ヒョ"],     // hy
+    [ "ミャ", "ミィ", "ミュ", "ミェ", "ミョ"],     // my
+    [ "リャ", "リィ", "リュ", "リェ", "リョ"],     // ry
+    [ "ギャ", "ギィ", "ギュ", "ギェ", "ギョ"],     // gy
+    [ "ジャ",   "ジ", "ジュ", "ジェ", "ジョ"],     // j
+    [ "ビャ", "ビィ", "ビュ", "ビェ", "ビョ"],     // by
+    [ "ピャ", "ピィ", "ピュ", "ピェ", "ピョ"],     // py
 
-    [ "つぁ", "つぃ",   "つ", "つぇ", "つぉ"],     // ts
-    [ "ふぁ", "ふぃ",   "ふ", "ふぇ", "ふぉ"],     // f
-    [ "ゔぁ", "ゔぃ",   "ゔ", "ゔぇ", "ゔぉ"],     // v
-    [   "ぁ",   "ぃ",   "ぅ",   "ぇ",   "ぉ"],     // x, l
-    [   "か",   "し",   "く",   "せ",   "こ"],     // c
-    [ "くぁ", "くぃ",   "く", "くぇ", "くぉ"],     // q
+    [ "ツァ", "ツィ",   "ツ", "ツェ", "ツォ"],     // ts
+    [ "ファ", "フィ",   "フ", "フェ", "フォ"],     // f
+    [ "ヴァ", "ヴィ",   "ヴ", "ヴェ", "ヴォ"],     // v
+    [   "ァ",   "ィ",   "ゥ",   "ェ",   "ォ"],     // x, l
+    [   "カ",   "シ",   "ク",   "セ",   "コ"],     // c
+    [ "クァ", "クィ",   "ク", "クェ", "クォ"],     // q
 
     // "n", will handle directly in public function
-    // [ "ん"],
+    // [ "ン"],
 ];
 
 
 lazy_static! {
-    static ref HIRAGANA_ROW_INDEX: HashMap<&'static str, usize> = {
+    static ref KATAKANA_ROW_INDEX: HashMap<&'static str, usize> = {
         let mut m = HashMap::new();
         m.insert("", 0);
         m.insert("k", 1);
@@ -84,7 +84,7 @@ lazy_static! {
         m
     };
 
-    static ref HIRAGANA_COLUMN_INDEX: HashMap<char, usize> = {
+    static ref KATAKANA_COLUMN_INDEX: HashMap<char, usize> = {
         let mut m = HashMap::new();
         m.insert('a', 0);
         m.insert('i', 1);
@@ -95,13 +95,13 @@ lazy_static! {
     };
 }
 
-pub fn romaji_to_hiragana(data: &str) -> String {
+pub fn romaji_to_katakana(data: &str) -> String {
     let mut result = String::new();
     let mut keep = String::new();
     let mut it = data.chars();
 
     while let Some(c) = it.next() {
-        match HIRAGANA_COLUMN_INDEX.get(&c) {
+        match KATAKANA_COLUMN_INDEX.get(&c) {
             Some(col) => {
                 // too many things
                 // it has "n"s or something we can't translate
@@ -109,7 +109,7 @@ pub fn romaji_to_hiragana(data: &str) -> String {
                     {
                         let part1 = &keep[..keep.len()-2];
                         for i in part1.chars() {
-                            result.push(if i == 'n' { 'ん' } else { i });
+                            result.push(if i == 'n' { 'ン' } else { i });
                         }
                     }
                     let part2 = &keep[keep.len()-2..].to_string();
@@ -127,14 +127,14 @@ pub fn romaji_to_hiragana(data: &str) -> String {
                         (it.next().unwrap(),
                          it.next().unwrap())
                     };
-                    result.push(if c1 == 'n' { 'ん' } else { c1 });
+                    result.push(if c1 == 'n' { 'ン' } else { c1 });
                     keep.clear();
                     keep.push(c2);
                 }
 
                 // lookup the table
-                match HIRAGANA_ROW_INDEX.get(keep.as_str()) {
-                    Some(row) => { result.push_str(HIRAGANA[*row][*col]) },
+                match KATAKANA_ROW_INDEX.get(keep.as_str()) {
+                    Some(row) => { result.push_str(KATAKANA[*row][*col]) },
                     None => {
                         result.push_str(&keep);
                         result.push(c);
@@ -148,7 +148,7 @@ pub fn romaji_to_hiragana(data: &str) -> String {
 
     // trailing "n"s and something we can't translate
     for c in keep.chars() {
-        result.push(if c == 'n' { 'ん' } else { c });
+        result.push(if c == 'n' { 'ン' } else { c });
     }
 
     result

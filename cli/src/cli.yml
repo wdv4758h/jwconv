@@ -15,6 +15,7 @@ args:
         default_value: "r2h"
         possible_values:
             - "r2h"
+            - "r2k"
     - data:
         help: data to translate
         required: true

@@ -20,6 +20,7 @@ fn main() {
     let data = matches.value_of("data").unwrap();
     let result = match matches.value_of("mode") {
         Some("r2h") => jwconv::romaji_to_hiragana(data),
+        Some("r2k") => jwconv::romaji_to_katakana(data),
         _ => unreachable!(),
     };
 
