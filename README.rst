@@ -3,7 +3,7 @@ Japanese Writing System Converter
 ========================================
 
 
-.. image:: https://cloud.githubusercontent.com/assets/2716047/22026949/36e7756c-dd0d-11e6-8b9a-4ec6db215f19.png
+.. image:: https://cloud.githubusercontent.com/assets/2716047/22053139/b94afcf0-dd89-11e6-8662-73bc7054a3ad.png
 
 
 .. contents:: Table of Contents
@@ -29,8 +29,12 @@ Usage
 
     $ jwconv hana
     はな
-    $ jwconv tourikenyuuki
-    とうりけにゅうき
+    $ jwconv taiwan
+    たいわん
+    $ jwconv -m r2k hana
+    ハナ
+    $ jwconv -m r2k taiwan
+    タイワン
 
 
 
