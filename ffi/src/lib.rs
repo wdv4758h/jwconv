@@ -30,6 +30,13 @@ pub extern fn romaji_to_hiragana(data: *const c_char) -> *const c_char {
 }
 
 #[no_mangle]
+pub extern fn romaji_to_katakana(data: *const c_char) -> *const c_char {
+    let data = cchar_to_str!(data);
+    let result = jwconv::romaji_to_katakana(data);
+    str_to_cchar!(result)
+}
+
+#[no_mangle]
 pub extern fn string_free(ptr: *mut c_char) {
     unsafe {
         if ptr.is_null() { return }
