@@ -9,7 +9,28 @@ Japanese Writing System Converter
 .. contents:: Table of Contents
 
 
-Installation
+Components
+========================================
+
+There are several crates in this repo.
+
++--------+--------------------------------------------------------------------------------+
+| Folder | Contents                                                                       |
++========+================================================================================+
+| core   | all conversion functions                                                       |
++--------+--------------------------------------------------------------------------------+
+| cli    | simple CLI wrapper of ``core``                                                 |
++--------+--------------------------------------------------------------------------------+
+| ffi    | static/dynamic library for using from different languages (including C header) |
++--------+--------------------------------------------------------------------------------+
+
+* For using in other Rust projects, use ``core`` (``jwconv`` in crates.io).
+* For using in CLI, use ``cli`` (``jwconv-cli`` in crates.io).
+* For using in other languages, use ``ffi`` (``jwconv-ffi`` in crates.io).
+
+
+
+Installation (CLI)
 ========================================
 
 From Source
@@ -22,7 +43,7 @@ From Source
 
 
 
-Usage
+Usage (CLI)
 ========================================
 
 .. code-block:: sh
@@ -35,6 +56,43 @@ Usage
     ハナ
     $ jwconv -m r2k taiwan
     タイワン
+
+
+
+FFI Examples
+========================================
+
+C
+------------------------------
+
+There is a C header in ``ffi/include/``,
+and an example in ``ffi/examples/``.
+
+To run the example:
+
+.. code-block:: sh
+
+    $ git clone git://github.com/wdv4758h/jwconv
+    $ cd jwconv/ffi/examples/
+    $ make all  # build & run
+
+
+Python
+------------------------------
+
+There is a Python wrapper by using CFFI in ``ffi/bindings/python/cffi/``.
+
+To try the wrapper:
+
+.. code-block:: sh
+
+    $ git clone git://github.com/wdv4758h/jwconv
+    $ cd jwconv/ffi/
+    $ cargo build --release
+    $ python -i bindings/python/cffi/jwconv.py
+    >>> romaji_to_katakana("taiwan")
+    'タイワン'
+    >>>
 
 
 
