@@ -11,5 +11,5 @@ keywords = ["japanese", "romaji", "hiragana", "cli"]
 name = "jwconv"
 
 [dependencies]
-jwconv = { path = "../core" }
+jwconv = { version = "0.0.1", path = "../core" }
 clap = { version = "2.20.0", features = ["yaml"] }
