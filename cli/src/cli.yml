@@ -8,7 +8,7 @@ settings:
 
 args:
     - mode:
-        help: choose translation mode
+        help: "choose translation mode (r2h for Romaji to Hiragana, r2k for Romaji to Katakana)"
         long: mode
         short: m
         takes_value: true
